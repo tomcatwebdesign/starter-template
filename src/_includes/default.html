@@ -4,32 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-      {{title}}
-    </title>
+    
     {% if description %}
       <meta name="description" content="{{description}}"/>
     {% endif %}
-    {% block head %}{% endblock %}
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
-    {% if prism == true %}
-      <link rel="stylesheet" type="text/css" href="/static/css/prism-tomorrow.css">
+    {% if keywords %} 
+      <meta name="keywords" content="">
     {% endif %}
+    {% block head %}{% endblock %}
+    
+    <!--Social Media Display-->
+    <!-- <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="/images/social.jpg" />
+    <meta property="og:image:secure_url" content="/images/social.jpg" /> -->
+    
+    <!--Favicons-->
+    <!--Use https://realfavicongenerator.net/ to generate and download your favicons-->
+    <!-- <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> -->
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/critical.css"/>
+    {% if path == "blog" %}
+      <link rel="stylesheet" type="text/css" href="/static/css/blog.css">
+    {% endif %}
+    <title>
+      {{title}}
+    </title>
   </head>
   <body>
     {% include "./partials/navbar.html" %}
 
-    {{ content | safe }}
+    <main>
+      {{ content | safe }}
+    </main>
 
     {% include "./partials/footer.html" %}
-
-    <script src="/static/js/alpine.js"></script>
 
     {% if path == "home" %}
       <!-- Netlify Identity Widget -->
       <!-- Needed only if you are using Netlify Identity feature -->
       <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% endif %}
-
+    <script type="text/javascript" src="/static/js/main.js"></script>
   </body>
 </html>
